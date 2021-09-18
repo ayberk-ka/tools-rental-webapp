@@ -12,7 +12,7 @@ CREATE TABLE kunde(
 
 INSERT INTO kunde (kunde_id,navn,fodsels_dato,mobil,email,adress )
 VALUES
-( 1,'Mahmoud','1992-08-24',45000746,'Ayberk.mh@gmail.com','Stavanger'),
+( 1,'Mahmoud','1999-08-20',45787706,'Ayberk.mh@gmail.com','OSlo'),
 ( 2,'Dana Omar','2000-01-01',45585974,'Dana24februar@gmail.com','Sndnes'),
 ( 3,'Dler Sharo','2000-01-02',96487555,'dlir.sharo@gmail.com','Kristiansand'),
 ( 4,'Håkon Kristiansen','2000-01-08',47585887,'haakon128@gmail.com','Oslo'),
@@ -68,4 +68,3 @@ ALTER TABLE ordre
     add CONSTRAINT FK_kunde_ordre;
 
 SELECT * FROM kunde;
-
