@@ -5,7 +5,7 @@ CREATE DATABASE web_shop;
 -- Tabellstruktur for tabell Kunde
 
 CREATE TABLE kunde(
-   kunde_id INT PRIMARY KEY NOT NULL ,
+   kunde_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT ,
    fornavn VARCHAR (20) NOT NULL,
    etternavn VARCHAR (20) NOT NULL,
    fodsels_dato DATE NOT NULL,
@@ -14,14 +14,14 @@ CREATE TABLE kunde(
    adress VARCHAR (40) NOT NULL
 		);
 
-INSERT INTO kunde (kunde_id,fornavn,etternavn,fodsels_dato,mobil,email,adress )
+INSERT INTO kunde (fornavn,etternavn,fodsels_dato,mobil,email,adress )
 VALUES
-( 1,'Mahmoud','Kasem','1999-08-20','45787706','Ayberk.mh@gmail.com','OSlo'),
-( 2,'Dana ','Omar','2000-01-01','45585974','Dana24februar@gmail.com','Sndnes'),
-( 3,'Dler',' Sharo','2000-01-02','96487555','dlir.sharo@gmail.com','Kristiansand'),
-( 4,'Håkon','Kristiansen','2000-01-08','47585887','haakon128@gmail.com','Oslo'),
-( 5,'Magnus',' Erga','2000-02-09','96741568','magnus.ser@live.no','Bergen'),
-( 6,'Aleksander',' Kolsrud','2000-03-15','93658746','Kols203@gmail.com','Haugesund');
+( 'Mahmoud','Kasem','1999-08-20','45787706','Ayberk.mh@gmail.com','OSlo'),
+( 'Dana ','Omar','2000-01-01','45585974','Dana24februar@gmail.com','Sndnes'),
+( 'Dler',' Sharo','2000-01-02','96487555','dlir.sharo@gmail.com','Kristiansand'),
+( 'Håkon','Kristiansen','2000-01-08','47585887','haakon128@gmail.com','Oslo'),
+( 'Magnus',' Erga','2000-02-09','96741568','magnus.ser@live.no','Bergen'),
+( 'Aleksander',' Kolsrud','2000-03-15','93658746','Kols203@gmail.com','Haugesund');
 
 
 SELECT * FROM kunde;
@@ -65,12 +65,28 @@ CREATE TABLE ordre(
 		(6,3,'2021-06-19'),
 		(2,2,'2021-09-14'),
 		(1,4,'2020-01-18');
+
+
 ALTER TABLE ordre
     ADD status varchar(20) DEFAULT('Sendt');
+
+SELECT
+    fornavn,etternavn, ordre_id,kjops_dato,ordre.status
+FROM kunde , ordre WHERE kunde.kunde_id=ordre.kunde_id;
+
 
 
 DELETE FROM kunde
 WHERE kunde_id=2;
 
+INSERT INTO kunde (fornavn,etternavn,fodsels_dato,mobil,email,adress )
+VALUES
+    ( 'Hilde','Solberg','2003-02-20','45783006','Hilde@gmail.com','Harstad');
+
+INSERT INTO ordre(kunde_id,produkt_id,kjops_dato)
+VALUES
+    (7,1,'2021-09-23');
 
 SELECT * FROM kunde;
+SELECT * FROM ordre;
+
