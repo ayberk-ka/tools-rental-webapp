@@ -16,7 +16,7 @@ USE Amv;
      );
      INSERT INTO ansatt (password,navn,email,adress,mobil,adminn,unionn)
      values
-                       ('fgdgr','mahmoud','Ayberk.mh@gmail.com','Stavanger','45000746',true,false),
+                       ('fgdr','mahmoud','Ayberk.mh@gmail.com','Stavanger','45000746',true,false),
                        ('vdsds','dlir','dlir.sharo@gmail.com','Sandnes','450054848',false,true)
                        ;
 
