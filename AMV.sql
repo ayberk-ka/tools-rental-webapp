@@ -34,9 +34,9 @@ values (1, '12345', 'Haakon', 'Kristiansen', 'haakon@mail.no', 'Universitetet 1'
 CREATE TABLE utstyr_type
 (
     utstyr_type_id INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    utstyr_navn VARCHAR(40) NOT NULL
+    utstyr_type_navn VARCHAR(40) NOT NULL
 );
-INSERT INTO utstyr_type (utstyr_navn)
+INSERT INTO utstyr_type (utstyr_type_navn)
 values
     ('Lastebil'),
     ('Spikerpistol Milwuakee'),
@@ -64,12 +64,12 @@ CREATE TABLE utstyr
         FOREIGN KEY (utstyr_type_id) REFERENCES utstyr_type(utstyr_type_id)
 );
 INSERT INTO utstyr (utstyr_type_id, utstyr_navn, leie_kostnad, status, bruk_info)
-VALUES (2, 'Spikerpistol Milwaukee liten', 20, true, ''),
+VALUES (2, 'Spikerpistol Milwaukee liten', 20, false, ''),
        (2, 'Spikerpistol Milwaukee mellom', 20, true, ''),
        (2, 'Spikerpistol Milwaukee stor', 20, false, ''),
-       (3, 'Strømaggregat 3,7 kW', 50, true, ''),
-       (4, 'Personløfter 230 VAC (12m)', 100, true, 'Krever sikkerhetsopplæring'),
-       (5,'Skruautomat',20,true,'ingen opplæring'),
+       (3, 'Strømaggregat 3,7 kW', 50, false, ''),
+       (4, 'Personløfter 230 VAC (12m)', 100, false, 'Krever sikkerhetsopplæring'),
+       (5,'Skruautomat',20,false,'ingen opplæring'),
        (6,'Fein Multimaskin',20,true,'ingen opplæring'),
        (7,'Eksentersliper 230 VAC',20,true,''),
        (8,' Flisekutter, keramiske fliser, stein',20,true,''),
@@ -96,20 +96,41 @@ CREATE TABLE leie_kontrakt
 );
 INSERT INTO leie_kontrakt (ansatt_id, utstyr_id, start_leie_dato, tilbake_dato, betalt, total_kostnad, tilstandsvurdering)
 VALUES
-    (1,1,'2021,10,22','2021,10,23',false,0,'bra tilstand '),
+    (1,2,'2021,10,22','2021,10,23',false,0,'bra tilstand '),
     (2,5,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
-    (3,4,'2021,10,21','2021,10,22',false,40,'bra tilstand '),
+    (3,4,'2021,10,28','2021,11,01',false,40,'bra tilstand '),
     (4,10,'2021,10,18','2021,10,22',false,70,'bra tilstand '),
     (5,1,'2021,10,15','2021,10,28',false,254.50,'bra tilstand '),
     (6,2,'2021,11,15','2021,12,22',false,254.50,'bra tilstand '),
     (7,7,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
     (8,8,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
-    (9,6,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
+    (9,6,'2021,10,27','2021,11,04',false,254.50,'bra tilstand '),
+    (1,1,'2021,10,24','2021,11,03',false,0,'bra tilstand '),
+
     (10,9,'2021,10,15','2021,10,22',false,254.50,'bra tilstand ');
 
 
-SELECT * FROM ansatt;
+-- Listing the 5 first rows of the 5 most important tables (your judgement), sorted FIRST_NAME.
+SELECT * FROM ansatt ORDER BY fornavn limit 5;
+
+-- sorted start_leie_dato.
+SELECT * FROM leie_kontrakt ORDER BY start_leie_dato;
+
+SELECT tilbake_dato - start_leie_dato,utstyr_navn AS total_dager FROM leie_kontrakt,utstyr WHERE utstyr.utstyr_id=leie_kontrakt.utstyr_id;
+
+ -- List all equipment in the system with their type
+SELECT utstyr.utstyr_navn,utstyr_type.utstyr_type_navn AS Utstyrer from utstyr,utstyr_type where utstyr.utstyr_type_id = utstyr_type.utstyr_type_id;
+SELECT utstyr.utstyr_navn,utstyr_type.utstyr_type_navn FROM utstyr INNER JOIN utstyr_type  ON utstyr.utstyr_type_id = utstyr_type.utstyr_type_id;
+
+-- List all the available (at the moment – not already borrowed) equipment
+SELECT status, utstyr_navn FROM utstyr WHERE  status  =1;
+
+-- List all equipment that is borrowed at the moment
+SELECT utstyr.utstyr_id,utstyr_navn,start_leie_dato,tilbake_dato,ansatt_id AS utleiet_idag FROM  leie_kontrakt,utstyr WHERE start_leie_dato= CURRENT_DATE and utstyr.utstyr_id=leie_kontrakt.utstyr_id;
+
+-- List all overdue equipment with their borrowers
+SELECT leie_kontrakt.ansatt_id, leie_kontrakt.utstyr_id,tilbake_dato FROM leie_kontrakt INNER JOIN utstyr  ON utstyr.utstyr_id = leie_kontrakt.utstyr_id where status=0 and tilbake_dato<current_date;
+
+
 SELECT * FROM utstyr_type;
-SELECT * FROM utstyr;
-SELECT * FROM leie_kontrakt;
-SELECT tilbake_dato - start_leie_dato as total_dager FROM leie_kontrakt,utstyr ;
+SELECT * FROM utstyr  ;
