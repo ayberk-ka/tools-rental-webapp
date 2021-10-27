@@ -118,18 +118,22 @@ SELECT * FROM leie_kontrakt ORDER BY start_leie_dato;
 
 SELECT tilbake_dato - start_leie_dato,utstyr_navn AS total_dager FROM leie_kontrakt,utstyr WHERE utstyr.utstyr_id=leie_kontrakt.utstyr_id;
 
- -- List all equipment in the system with their type
-SELECT utstyr.utstyr_navn,utstyr_type.utstyr_type_navn AS Utstyrer from utstyr,utstyr_type where utstyr.utstyr_type_id = utstyr_type.utstyr_type_id;
-SELECT utstyr.utstyr_navn,utstyr_type.utstyr_type_navn FROM utstyr INNER JOIN utstyr_type  ON utstyr.utstyr_type_id = utstyr_type.utstyr_type_id;
+ -- List all equipment in the system with their type. two methods below
+SELECT utstyr.utstyr_navn,utstyr_type.utstyr_type_navn AS Utstyrer from utstyr,utstyr_type
+        where utstyr.utstyr_type_id = utstyr_type.utstyr_type_id;
+SELECT utstyr.utstyr_navn,utstyr_type.utstyr_type_navn FROM utstyr
+        INNER JOIN utstyr_type  ON utstyr.utstyr_type_id = utstyr_type.utstyr_type_id;
 
 -- List all the available (at the moment – not already borrowed) equipment
 SELECT status, utstyr_navn FROM utstyr WHERE  status  =1;
 
 -- List all equipment that is borrowed at the moment
-SELECT utstyr.utstyr_id,utstyr_navn,start_leie_dato,tilbake_dato,ansatt_id AS utleiet_idag FROM  leie_kontrakt,utstyr WHERE start_leie_dato= CURRENT_DATE and utstyr.utstyr_id=leie_kontrakt.utstyr_id;
+SELECT utstyr.utstyr_id,utstyr_navn,start_leie_dato,tilbake_dato,ansatt_id AS utleiet_idag FROM  leie_kontrakt,utstyr
+          WHERE start_leie_dato= CURRENT_DATE and utstyr.utstyr_id=leie_kontrakt.utstyr_id;
 
 -- List all overdue equipment with their borrowers
-SELECT leie_kontrakt.ansatt_id, leie_kontrakt.utstyr_id,tilbake_dato FROM leie_kontrakt INNER JOIN utstyr  ON utstyr.utstyr_id = leie_kontrakt.utstyr_id where status=0 and tilbake_dato<current_date;
+SELECT leie_kontrakt.ansatt_id, leie_kontrakt.utstyr_id,tilbake_dato FROM leie_kontrakt
+          INNER JOIN utstyr  ON utstyr.utstyr_id = leie_kontrakt.utstyr_id where status=0 and tilbake_dato<current_date;
 
 
 SELECT * FROM utstyr_type;
