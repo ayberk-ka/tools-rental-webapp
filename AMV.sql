@@ -112,4 +112,4 @@ SELECT * FROM ansatt;
 SELECT * FROM utstyr_type;
 SELECT * FROM utstyr;
 SELECT * FROM leie_kontrakt;
-SELECT tilbake_dato - start_leie_dato as total_dager   FROM leie_kontrakt,utstyr ;
+SELECT tilbake_dato - start_leie_dato as total_dager FROM leie_kontrakt,utstyr ;
