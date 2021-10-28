@@ -65,13 +65,13 @@ CREATE TABLE utstyr
 );
 INSERT INTO utstyr (utstyr_type_id, utstyr_navn, leie_kostnad, status, bruk_info)
 VALUES (2, 'Spikerpistol Milwaukee liten', 20, false, ''),
-       (2, 'Spikerpistol Milwaukee mellom', 20, true, ''),
+       (2, 'Spikerpistol Milwaukee mellom', 20, false, ''),
        (2, 'Spikerpistol Milwaukee stor', 20, false, ''),
        (3, 'Strømaggregat 3,7 kW', 50, false, ''),
        (4, 'Personløfter 230 VAC (12m)', 100, false, 'Krever sikkerhetsopplæring'),
        (5,'Skruautomat',20,false,'ingen opplæring'),
        (6,'Fein Multimaskin',20,true,'ingen opplæring'),
-       (7,'Eksentersliper 230 VAC',20,true,''),
+       (7,'Eksentersliper 230 VAC',20,false,''),
        (8,' Flisekutter, keramiske fliser, stein',20,true,''),
        (9,' Vinkelsliper, stein',20,true,''),
        (10,'Båndsliper 230 VAC',20,true,'');
@@ -97,13 +97,13 @@ CREATE TABLE leie_kontrakt
 INSERT INTO leie_kontrakt (ansatt_id, utstyr_id, start_leie_dato, tilbake_dato, betalt, total_kostnad, tilstandsvurdering)
 VALUES
     (1,2,'2021,10,22','2021,10,23',false,0,'bra tilstand '),
-    (2,5,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
+    (2,5,'2021,10,15','2021,10,25',false,254.50,'bra tilstand '),
     (3,4,'2021,10,28','2021,11,01',false,40,'bra tilstand '),
     (4,10,'2021,10,18','2021,10,22',false,70,'bra tilstand '),
     (5,1,'2021,10,15','2021,10,28',false,254.50,'bra tilstand '),
     (6,2,'2021,11,15','2021,12,22',false,254.50,'bra tilstand '),
     (7,7,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
-    (8,8,'2021,10,15','2021,10,22',false,254.50,'bra tilstand '),
+    (8,8,'2021,10,15','2021,10,27',false,254.50,'bra tilstand '),
     (9,6,'2021,10,27','2021,11,04',false,254.50,'bra tilstand '),
     (1,1,'2021,10,24','2021,11,03',false,0,'bra tilstand '),
 
@@ -129,11 +129,11 @@ SELECT status, utstyr_navn FROM utstyr WHERE  status  =1;
 
 -- List all equipment that is borrowed at the moment
 SELECT utstyr.utstyr_id,utstyr_navn,start_leie_dato,tilbake_dato,ansatt_id AS utleiet_idag FROM  leie_kontrakt,utstyr
-          WHERE start_leie_dato= CURRENT_DATE and utstyr.utstyr_id=leie_kontrakt.utstyr_id;
+          WHERE start_leie_dato= CURRENT_DATE AND utstyr.utstyr_id=leie_kontrakt.utstyr_id ;
 
 -- List all overdue equipment with their borrowers
 SELECT leie_kontrakt.ansatt_id, leie_kontrakt.utstyr_id,tilbake_dato FROM leie_kontrakt
-          INNER JOIN utstyr  ON utstyr.utstyr_id = leie_kontrakt.utstyr_id where status=0 and tilbake_dato<current_date;
+          INNER JOIN utstyr  ON utstyr.utstyr_id = leie_kontrakt.utstyr_id WHERE status=0 AND tilbake_dato<CURRENT_DATE;
 
 
 SELECT * FROM utstyr_type;
