@@ -92,7 +92,7 @@ CREATE TABLE leie_kontrakt
         FOREIGN KEY (ansatt_id) REFERENCES ansatt(ansatt_id),
 
     CONSTRAINT FK_utstyr_leie_kontrakt
-        FOREIGN KEY (utstyr_id) REFERENCES utstyr(utstyr_id)
+        FOREIGN KEY (utstyr_id) REFERENCES utstyr(utstyr_id) ON DELETE CASCADE
 );
 INSERT INTO leie_kontrakt (ansatt_id, utstyr_id, start_leie_dato, tilbake_dato, betalt, total_kostnad, tilstandsvurdering)
 VALUES
@@ -111,7 +111,7 @@ VALUES
 
 
 -- Listing the 5 first rows of the 5 most important tables (your judgement), sorted FIRST_NAME.
-SELECT * FROM ansatt ORDER BY fornavn limit 5;
+SELECT * FROM ansatt ORDER BY fornavn limit 5 ;
 
 -- sorted start_leie_dato.
 SELECT * FROM leie_kontrakt ORDER BY start_leie_dato;
@@ -136,5 +136,7 @@ SELECT leie_kontrakt.ansatt_id, leie_kontrakt.utstyr_id,tilbake_dato FROM leie_k
           INNER JOIN utstyr  ON utstyr.utstyr_id = leie_kontrakt.utstyr_id WHERE status=0 AND tilbake_dato<CURRENT_DATE;
 
 
-SELECT * FROM utstyr_type;
-SELECT * FROM utstyr  ;
+
+SELECT * FROM leie_kontrakt;
+DELETE FROM utstyr WHERE utstyr_navn='Skruautomat';
+SELECT * FROM utstyr;
