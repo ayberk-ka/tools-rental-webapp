@@ -1,5 +1,12 @@
-bacit/web/bacit_web/AnsattM.class
 bacit/web/bacit_web/LoggUt.class
+bacit/web/bacit_web/Logginn.class
 bacit/web/bacit_web/AnsattSQL.class
-bacit/web/bacit_web/UserProfile.class
 bacit/web/bacit_web/DBUtils.class
+bacit/web/bacit_web/kontroller/UtstyrServlet.class
+bacit/web/bacit_web/DAO/UtstyrDAO.class
+bacit/web/bacit_web/Modell/AnsattM.class
+bacit/web/bacit_web/Modell/UtstyrTypeM.class
+bacit/web/bacit_web/UserProfile.class
+bacit/web/bacit_web/DAO/AnsattDAO.class
+bacit/web/bacit_web/kontroller/NyUtstyrServlet.class
+bacit/web/bacit_web/Modell/UtstyrM.class

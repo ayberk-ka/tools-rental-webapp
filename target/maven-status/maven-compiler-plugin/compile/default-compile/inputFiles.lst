@@ -1,5 +1,12 @@
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/DAO/AnsattDAO.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/Logginn.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/AnsattSQL.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/DAO/UtstyrDAO.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/UtstyrM.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/UserProfile.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/DBUtils.java
-/usr/src/mymaven/src/main/java/bacit/web/bacit_web/AnsattM.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/AnsattM.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/NyUtstyrServlet.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/UtstyrServlet.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/LoggUt.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/UtstyrTypeM.java

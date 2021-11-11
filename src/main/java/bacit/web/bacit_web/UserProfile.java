@@ -32,17 +32,19 @@ public class UserProfile extends HttpServlet {
         printWriter.println("<h1>UserProfile<h1>");
         printWriter.println("<h3>");
 
-        try {
+     /*   try {
             getUser3(printWriter);
 
         } catch (SQLException e) {
             e.printStackTrace();
-        }
+        }*/
         printWriter.println("<h3>");
 
         printWriter.println("<p>&#128512;</p>");
         printWriter.println("<a href=\"AnsattSQL\">AnsattSQL</a>\n" +
                 "\t\t<form action=\"AnsattSQL\" method=\"GET\" >");
+        printWriter.println("<a href=\"NyUtstyrServlet\">NyUtstyrServlet</a>\n" +
+                "\t\t<form action=\"NyUtstyrServlet\" method=\"GET\" >");
 
         printWriter.println("\n" +
                 "<html lang=\"en\">\n" +
@@ -61,7 +63,7 @@ public class UserProfile extends HttpServlet {
                 "\"><span>Her kan du låne Utstyr</span></span></h1>\n" +
 
 
-                "\t\t\t<form action=\"AnsattSQL\" method=\"post\" >\n" +
+                "\t\t\t<form action=\"Logginn\" method=\"post\" >\n" +
                 "\n" +
                 "\t\t\t<div class=\"box-header\">\n" +
                 "\t\t\t\t<h2>Bestile</h2>\n" +

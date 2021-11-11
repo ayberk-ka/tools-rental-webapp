@@ -139,5 +139,8 @@ SELECT leie_kontrakt.ansatt_id, leie_kontrakt.utstyr_id,tilbake_dato FROM leie_k
 
 
 SELECT * FROM leie_kontrakt;
-DELETE FROM utstyr WHERE utstyr_navn='Skruautomat';
 SELECT * FROM utstyr;
+SELECT * FROM ansatt;
+
+
+select *  from utstyr where status=0;

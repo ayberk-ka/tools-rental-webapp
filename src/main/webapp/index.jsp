@@ -22,14 +22,15 @@
 		</div>
 
 		<div class="login-box animated fadeInUp">
-			<form action="AnsattSQL" method="post" >
+			<form action="Logginn" method="post" >
 
-			<div class="box-header">
+
+				<div class="box-header">
 				<h2>Logg Inn</h2>
 			</div>
-			<label for="userName">Email</label>
+			<label for="email">Email</label>
 			<br/>
-			<input type="text" id="userName" name='userName'>
+			<input type="text" id="email" name='email'>
 			<br/>
 			<label for="password">Passord</label>
 			<br/>

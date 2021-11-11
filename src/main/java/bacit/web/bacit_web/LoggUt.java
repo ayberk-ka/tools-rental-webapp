@@ -4,6 +4,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 
@@ -11,10 +12,10 @@ import java.io.PrintWriter;
 @WebServlet("/LoggUt")
 public class LoggUt extends HttpServlet {
 
-    public void doGet(HttpServletRequest req, HttpServletResponse res) throws IOException {
+    public void doGet(HttpServletRequest request, HttpServletResponse res) throws IOException {
         res.setContentType("text/html");
-        PrintWriter out = res.getWriter();
-
+        HttpSession session = request.getSession();
+        session.removeAttribute("ansatt");
 
         res.sendRedirect("index.jsp");
     }

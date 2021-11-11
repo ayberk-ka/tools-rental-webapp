@@ -1,5 +1,7 @@
 package bacit.web.bacit_web;
 
+import bacit.web.bacit_web.Modell.AnsattM;
+
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,25 +23,19 @@ public class AnsattSQL extends HttpServlet {
 
 
 
-         protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-                                     response.setContentType("text/html");            // response  Html text data type
-                 PrintWriter prints = response.getWriter();// hente getWriter og sitte på out2
-             String fornavn = request.getParameter("fornavn");
-             String etternavn = request.getParameter("etternavn");
-             String email=request.getParameter("email.");
-             try {
-                 if (getUser2(prints, fornavn, etternavn, email)){
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        response.setContentType("text/html");            // response  Html text data type
+        PrintWriter prints = response.getWriter();// hente getWriter og sitte på out2
+        String fornavn = request.getParameter("fornavn");
+        String etternavn = request.getParameter("etternavn");
+        String email=request.getParameter("email.");
+        try {
+            getUser2(prints, fornavn, etternavn, email);
 
-                 String n= request.getParameter("fornavn");
-                 String e= request.getParameter("etternavn");
-                 String s= request.getParameter("email");
-                 prints.println(n);
-                 prints.println(e);
-                     prints.println(s);
-                 prints.close();}
-             } catch (SQLException e) {
-                 e.printStackTrace();
-             }
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
 
 
 
@@ -54,46 +50,45 @@ public class AnsattSQL extends HttpServlet {
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
 
-          response.setContentType("text/html");
+        response.setContentType("text/html");
 
-          PrintWriter out = response.getWriter();
-          String userName = request.getParameter("userName");
-          String password = request.getParameter("password");
+        PrintWriter out = response.getWriter();
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
 
-          try {
-               if (getUser(userName, password, out) != null) {
-                   response.setContentType("text/html");
-                   out.println("Welcome: " + userName);
-                   out.println("<!DOCTYPE html>");
-                   out.println("<html>");
-                   out.println("<head>");
-                   out.println("</head>\n");
-                   out.println("<body>");
-                   out.println("<form action='AnsattSQL' method='Post'>");
-                   out.println("<h1>UIA Gruppe7</h1>");
-                   out.println("<p>&#128512;</p>");
-                   out.println("");
-                   out.println("<a href= 'LoggUt' >LoggUt</a>");
+        try {
+            if (getUser(email, password, out) != null) {
+                out.println("Welcome: " + email);
+                out.println("<!DOCTYPE html>");
+                out.println("<html>");
+                out.println("<head>");
+                out.println("</head>\n");
+                out.println("<body>");
+                out.println("<form action='AnsattSQL' method='Post'>");
+                out.println("<h1>UIA Gruppe7</h1>");
+                out.println("<p>&#128512;</p>");
+                out.println("");
+                out.println("<a href= 'LoggUt' >LoggUt</a>");
 
-                    // getUser3(out);
+                // getUser3(out);
 
-                   out.println("</body>\n");
-                   out.println("</html>");
-                   RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UserProfile");
-                   requestDispatcher.include(request, response);
-               // getUser2(out);
+                out.println("</body>\n");
+                out.println("</html>");
+                RequestDispatcher requestDispatcher = request.getRequestDispatcher("/UserProfile");
+                requestDispatcher.include(request, response);
+                // getUser2(out);
 
 
             } else {
                 out.println("Plaese check User/Password");
                 RequestDispatcher requestDispatcher = request.getRequestDispatcher("/index.jsp");
                 requestDispatcher.include(request, response);
-                   }
+            }
 
-          } catch (SQLException e) {
-              out.println("Error" + e.getMessage());
+        } catch (SQLException e) {
+            out.println("Error" + e.getMessage());
             e.printStackTrace();
-          }
+        }
     }
 
     private AnsattM getUser(String email, String password, PrintWriter out) throws SQLException {
@@ -118,7 +113,7 @@ public class AnsattSQL extends HttpServlet {
                             rs.getString("password"),
                             rs.getString("fornavn"),
                             rs.getString("etternavn"),
-                            rs.getNString("adresse"),
+                            rs.getString("adresse"),
                             rs.getString("mobil"),
                             rs.getString("email"),
                             rs.getInt("unionn"),
@@ -130,7 +125,7 @@ public class AnsattSQL extends HttpServlet {
 
 
 
-    protected boolean getUser2(PrintWriter prints, String fornavn, String etternavn ,String email) throws SQLException {
+    protected void getUser2(PrintWriter prints, String fornavn, String etternavn ,String email) throws SQLException {
         Connection db;
         try {
             String query6 = "select fornavn, etternavn, email from ansatt";
@@ -157,7 +152,6 @@ public class AnsattSQL extends HttpServlet {
         }
 
 
-        return false;
     }
 
 
