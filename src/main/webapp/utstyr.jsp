@@ -18,12 +18,13 @@
 <body style="background-color: orange;">
 <jsp:include page="menu.html"></jsp:include>
 <div class="container">
-    <h2>Ledige Utstyrer</h2>
+    <h2>Ledig Utstyr</h2>
     <table class="table table-striped">
         <thead>
 
     <tr>
-        <th>Utstyr</th>
+        <th>UtstyrID</th>
+        <th>Utstyr typeID</th>
         <th>Navn</th>
         <th>Info</th>
         <th>Status</th>
@@ -37,6 +38,8 @@
         <%   for(UtstyrM u : utstyr) { %>
         <tr>
             <td> <span>  <%=u.getUtstyr_id()%></span>
+            </td>
+            <td> <span>  <%=u.getUtstyr_type_id()%></span>
             </td>
 
         <td> <span>  <%=u.getUtstyr_navn()%></span>

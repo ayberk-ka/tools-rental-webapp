@@ -13,7 +13,8 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
-@WebServlet("/Logginn")
+@WebServlet ("/Logginn")
+
 
 public class Logginn extends HttpServlet {
 
