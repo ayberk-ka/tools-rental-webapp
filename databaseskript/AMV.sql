@@ -110,6 +110,14 @@ VALUES
 
     (10,9,'2021,10,15','2021,10,22',false,254.50,'bra tilstand ');
 
+create table lease
+(
+    leaseId varchar (10) not null ,
+    leaseContent MEDIUMBLOB,
+    Primary key (leaseId)
+);
+
+select * from lease;
 
 -- Listing the 5 first rows of the 5 most important tables (your judgement), sorted FIRST_NAME.
 SELECT * FROM ansatt ORDER BY fornavn limit 5 ;

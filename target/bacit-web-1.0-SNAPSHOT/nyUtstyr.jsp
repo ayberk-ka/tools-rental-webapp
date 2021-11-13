@@ -1,5 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="bacit.web.bacit_web.Modell.UtstyrTypeM" %><%--
+<%@ page import="bacit.web.bacit_web.Modell.UtstyrTypeM" %>
+<%@ page import="bacit.web.bacit_web.Modell.AnsattM" %><%--
   Created by IntelliJ IDEA.
   User: Ms-ka
   Date: 11/8/2021
@@ -13,6 +14,12 @@
 <head>
   <meta charset="UTF-8">
   <title>Ny Utstyr</title>
+  <%
+    AnsattM ansattM = (AnsattM) session.getAttribute("ansatt");
+    if (null == ansattM) {
+      response.sendRedirect("index.jsp");
+    }
+  %>
 </head>
 <body style="background-color: orange;">
 <jsp:include page="menu.html"></jsp:include>
