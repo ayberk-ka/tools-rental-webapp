@@ -62,6 +62,7 @@ public class UtstyrDAO {
         statement.setBoolean(4, utsty.isStatus());
         statement.setString(5, utsty.getBruk_info());
         statement.execute() ;
+        statement.close();
 
         return true;
     }
