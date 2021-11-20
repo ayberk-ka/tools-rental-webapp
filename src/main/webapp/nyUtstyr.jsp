@@ -31,7 +31,7 @@
     <input type="text" class="form-control" id="utstyr_navn" name="utstyr_navn" aria-describedby="utstyr navn help" placeholder="Legge til utstyr navn">
   </div>
   <div class="form-group">
-    <label for="utstyr_type_id">Utstyr navn</label>
+    <label for="utstyr_type_id">Utstyr type navn</label>
     <select id="utstyr_type_id" name="utstyr_type_id" class="form-select" aria-label="select">
       <option selected>Open this select menu</option>
       <%   for(UtstyrTypeM u : utstyType) { %>

@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
@@ -49,24 +50,37 @@ public class FileUploadPdfServlet extends HttpServlet {
                 return;
             } else if (filePart.getSize() > 1048576) { //2mb
                 {
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher("/error.jsp");
+                    requestDispatcher.include(request, response);
                     printWriter.println("<br/> File size too big");
+
                     return;
                 }
             }
 
+            //her vi endrer  pdfFile til byte
             pdfFileBytes = filePart.getInputStream();
 
             final byte[] bytes = new byte[pdfFileBytes.available()];
             pdfFileBytes.read(bytes);
 
             FileDAO fileDAO = new FileDAO();
-            fileDAO.uploadFile(leaseId, bytes, printWriter);
-            printWriter.println("<script>window.location.href = \"readFile.jsp\" </script>");
+         //Her vi etter at vi endret pdf til byte setet byte som parameter på metode uploadFile til å lagere på database
+            int success = fileDAO.uploadFile(leaseId, bytes, printWriter);
+
+            if(success>0) {
+                request.getRequestDispatcher("readFile.jsp").forward(request, response);
+            } else {
+                response.sendRedirect("error.jsp");
+            }
+
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-        } finally {
+        }
+        // vi brukte finally for å close pdfFileBytes og printWriter for å clean minner
+        finally {
 
             if (pdfFileBytes != null) {
                 pdfFileBytes.close();

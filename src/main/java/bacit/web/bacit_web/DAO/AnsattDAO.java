@@ -1,7 +1,7 @@
 package bacit.web.bacit_web.DAO;
+//Her kalte vi klassene som vi skal bruke
 import bacit.web.bacit_web.Modell.AnsattM;
 import bacit.web.bacit_web.DBUtils;
-import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -9,22 +9,28 @@ import java.sql.SQLException;
 
 public class AnsattDAO {
 
-
-    public AnsattM getUser(String email, String password, PrintWriter out) throws SQLException {
+    //Her er en metode bruker for å logge inn en ansatt, den sjekker email og passord i DB
+    public AnsattM getUser(String email, String password) throws SQLException {
     Connection db = null;
     try {
-        db = DBUtils.getINSTANCE().getConnection(out);
+        db = DBUtils.getINSTANCE().getConnection();
     } catch (ClassNotFoundException e) {
         e.printStackTrace();
     }
 
+        //Her lager vi en spørring for å få resultater fra DB etter disse parametrene
     String query3 = "select * from ansatt where  email = ? AND password=?";
+
     PreparedStatement statement = db.prepareStatement(query3);
 
     statement.setString(1, email);
     statement.setString(2, password);
+
+    // Her har vi utført spørringen
     ResultSet rs = statement.executeQuery();
-    AnsattM model = null;
+
+        //Hvis det har oppstått en feil vil få null
+        AnsattM model = null;
 
     while (rs.next()) {
         model =
@@ -41,7 +47,7 @@ public class AnsattDAO {
     }
         db.close();
 
-
+        // Her returnerer en model, det fremstiller en ansatt som kan logge inn
         return model;
 }
 

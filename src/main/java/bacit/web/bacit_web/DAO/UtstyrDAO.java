@@ -35,7 +35,7 @@ public class UtstyrDAO {
                     resultSet.getString("utstyr_navn"),
                     resultSet.getString("bruk_info"));
             modell.setUtstyr_id(resultSet.getInt("utstyr_id")); // Utstyr_id er Auto increment så tenger vi ikke å gi value til id
-            utstyr.add(modell);
+            utstyr.add(modell);  // brukte add funk for save  modell opjekt i utstyr list
         }
         db.close();
 

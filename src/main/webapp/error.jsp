@@ -17,48 +17,20 @@
 <div class="container">
 
     <div class="top">
-        <h1 id="title" class="hidden"><span id="logo">AMV <span>Velkommen</span></span></h1>
+        <h1 id="title" class="hidden"><span id="logo">AMV <span> ERROR </span></span></h1>
+
     </div>
     <div class="login-box animated fadeInUp">
-        <form action="AnsattSQL" method="post" >
+        <h1 style="color:Tomato;">Du kan ta kontakt
+            med oss for hjelp:
+            4500000
+            Mahmoud.email.com</h1>
 
-            <div class="box-header">
-                <h2>Logg Inn</h2>
-            </div>
-            <label for="userName">Email</label>
-            <br/>
-            <input type="text" id="userName" name='userName'>
-            <br/>
-            <label for="password">Passord</label>
-            <br/>
-            <input type="password" id="password" name='password'>
-            <br/>
-            <button type="submit">Logg Inn</button>
 
-        </form>
-        <br/>
 
     </div>
 </div>
 </body>
 
-<script>
-    $(document).ready(function () {
-        $('#logo').addClass('animated fadeInDown');
-        $("input:text:visible:first").focus();
-    });
-    $('#username').focus(function() {
-        $('label[for="username"]').addClass('selected');
-    });
-    $('#username').blur(function() {
-        $('label[for="username"]').removeClass('selected');
-    });
-    $('#password').focus(function() {
-        $('label[for="password"]').addClass('selected');
-    });
-    $('#password').blur(function() {
-        $('label[for="password"]').removeClass('selected');
-    });
-</script>
 
 </html>

@@ -1,5 +1,4 @@
 package bacit.web.bacit_web;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -31,6 +30,7 @@ public class DBUtils {
      */
     public Connection getConnection(PrintWriter... out) throws SQLException, ClassNotFoundException {
         Connection toReturn = null;
+        //Koble programmet til Mariadb database
         Class.forName("org.mariadb.jdbc.Driver");
         try {
             toReturn = (connection != null)
@@ -44,7 +44,6 @@ public class DBUtils {
             if (out[0] instanceof PrintWriter){
                 out[0].println("SQL Exception " + e);
             }
-            //out.println("SQL Exception " + e);
         }
         return toReturn;
     }

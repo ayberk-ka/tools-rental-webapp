@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.*;
 import java.util.ArrayList;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -29,7 +30,7 @@ public class NyUtstyrServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
         try {
             ArrayList<UtstyrTypeM> utstyType = utstyrDAO.getUtstyType(printWriter);
-            request.setAttribute("utstyType", utstyType);  // vi har request og gi Attribute Parameter (utstyr) fra utstyr
+            request.setAttribute("utstyType", utstyType);  // vi har request til jsp og gi Attribute Parameter (utstyrType) fra utstyrType arry
             request.getRequestDispatcher("nyUtstyr.jsp").forward(request, response); // send og flyte videre til jsp
         } catch (SQLException | ServletException e) {
             e.printStackTrace();
@@ -41,7 +42,7 @@ public class NyUtstyrServlet extends HttpServlet {
         PrintWriter printWriter = response.getWriter();
 
         Boolean status = false;
-     // her skal sjekke på all parametrs inn i input i form hvis Status cheket så får tilbake true hivs ikke får false
+     // her skal sjekke på alle parametere av request i form hvis Status funnet så får tilbake true hivs ikke får false
         if (request.getParameterMap().containsKey("status")) {
             status = true;
         }
@@ -55,11 +56,18 @@ public class NyUtstyrServlet extends HttpServlet {
                 request.getParameter("bruk_info")
         );
 
-        UtstyrDAO utstyrDAO = new UtstyrDAO();
-        printWriter.println("<script>window.location.href = \"UtstyrServlet\" </script>");
-        try {
-            utstyrDAO.saveUtstyr(utstyr, printWriter);
 
+        try {
+            UtstyrDAO utstyrDAO = new UtstyrDAO();
+// Her lagre alle result på saveUtstyr metode hvis og får return true til seccses hvis data lagret
+            Boolean succses= utstyrDAO.saveUtstyr(utstyr, printWriter);
+            if (succses==true) {
+
+                printWriter.println("<script>window.location.href = \"UtstyrServlet\" </script>");
+            }
+else {
+                response.sendRedirect("error.jsp");
+            }
         } catch (SQLException e) {
             printWriter.println(e.getMessage());
         }

@@ -30,23 +30,28 @@ public class FileReadPdfServlet extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String leaseId = request.getParameter("leaseId")!=null?request.getParameter("leaseId"):"NA";
-        ServletOutputStream sos;
+        String leaseId = request.getParameter("leaseId");
+
+        ServletOutputStream sos; // Den hjelpe for å lese byte
+        // here output skal være pdf
         response.setContentType("application/pdf");
 
+        // vi brukt setHeader for å åpner pdfFile i browser og gitt navn til file
         response.setHeader("Content-disposition","inline; filename="+leaseId+".pdf" );
 
 
-        sos = response.getOutputStream();
+        sos = response.getOutputStream(); // here vi gjørt response klær for å kunne lese byte
 
         ResultSet rset=null;
         try {
             FileDAO fileDAO = new FileDAO();
             rset = fileDAO.getFile(leaseId);
-            if (rset.next())
+            if (rset.next()){
                 sos.write(rset.getBytes("leaseContent"));
-            else
-                return;
+            } else // hvis finner ikke file id
+            {
+                response.sendRedirect("error.jsp");
+            }
 
         } catch (SQLException e) {
             // TODO Auto-generated catch block
