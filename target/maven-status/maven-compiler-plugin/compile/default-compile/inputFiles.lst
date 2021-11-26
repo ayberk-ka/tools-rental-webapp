@@ -1,3 +1,5 @@
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/NyAnsattServlet.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/LeieServlet.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/DBUtils.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/NyUtstyrServlet.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/FileReadPdfServlet.java
@@ -5,9 +7,12 @@
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/DAO/FileDAO.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/UtstyrServlet.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/FileUploadPdfServlet.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/LeieM.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/DAO/AnsattDAO.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/kontroller/Logginn.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/PasswordEncrypting.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/DAO/UtstyrDAO.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/UtstyrM.java
+/usr/src/mymaven/src/main/java/bacit/web/bacit_web/DAO/LeieDAO.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/AnsattM.java
 /usr/src/mymaven/src/main/java/bacit/web/bacit_web/Modell/UtstyrTypeM.java

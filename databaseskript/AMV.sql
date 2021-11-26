@@ -19,16 +19,16 @@ CREATE TABLE ansatt
 );
 
 INSERT INTO ansatt (ansatt_id, password, fornavn, etternavn, email, adresse, mobil, administrator, unionn)
-values (1, '12345', 'Haakon', 'Kristiansen', 'haakon@mail.no', 'Universitetet 1', '47346424', 1, 1),
-       (2, '1234', 'Aleksander', 'Kolsrud', 'aleksander@mail.no', 'Universitetet 3', '99887766', 0, 1),
-       (3, '123', 'Mahmoud', 'Kasem', 'mahmoud@mail.no', 'Stavangerveien 2', '99778866', 0, 1),
-       (4, '123', 'Dlir', 'Sharo', 'dlir@mail.no', 'Kristiansandgata 12', '88997766', 0, 1),
-       (5, '123', 'Dana', 'D. Omar', 'dana@mail.no', 'Kristiansandgata 8', '77886699', 0, 1),
-       (6, '123', 'Magnus', 'Erga', 'magnus@mail.no', 'Oslovika 7', '88667799', 0, 1),
-       (7, '123', 'Ole', 'Bjørnar', 'ole@mail.no', 'Lærergata 6', '77556644', 1, 1),
-       (8, '123', 'Terje', 'Lærer', 'terjer@mail.no', 'Lærergata 3', '77559944', 0, 1),
-       (9, '123', 'Svein', 'Nilsen', 'svein@mail.no', 'Gateveien 1', '55664477', 0, 1),
-       (10, '123', 'Kari', 'Karlsen', 'kari@mail.no', 'Veiengata 2', '66774499', 0, 1);
+values (1, '8DBAC8AA42A26896A2BA2B72623E7987', 'Haakon', 'Kristiansen', 'haakon@mail.no', 'Universitetet 1', '47346424', 0, 1),
+       (2, '8DBAC8AA42A26896A2BA2B72623E7987', 'Aleksander', 'Kolsrud', 'aleksander@mail.no', 'Universitetet 3', '99887766', 0, 1),
+       (3, '8DBAC8AA42A26896A2BA2B72623E7987', 'Mahmoud', 'Kasem', 'mahmoud@mail.no', 'Stavangerveien 2', '99778866', 1, 1),
+       (4, '8DBAC8AA42A26896A2BA2B72623E7987', 'Dlir', 'Sharo', 'dlir@mail.no', 'Kristiansandgata 12', '88997766', 0, 1),
+       (5, '8DBAC8AA42A26896A2BA2B72623E7987', 'Dana', 'D. Omar', 'dana@mail.no', 'Kristiansandgata 8', '77886699', 0, 1),
+       (6, '8DBAC8AA42A26896A2BA2B72623E7987', 'Magnus', 'Erga', 'magnus@mail.no', 'Oslovika 7', '88667799', 0, 1),
+       (7, '8DBAC8AA42A26896A2BA2B72623E7987', 'Ole', 'Bjørnar', 'ole@mail.no', 'Lærergata 6', '77556644', 1, 1),
+       (8, '8DBAC8AA42A26896A2BA2B72623E7987', 'Terje', 'Lærer', 'terjer@mail.no', 'Lærergata 3', '77559944', 0, 1),
+       (9, '8DBAC8AA42A26896A2BA2B72623E7987', 'Svein', 'Nilsen', 'svein@mail.no', 'Gateveien 1', '55664477', 0, 1),
+       (10, '8DBAC8AA42A26896A2BA2B72623E7987', 'Kari', 'Karlsen', 'kari@mail.no', 'Veiengata 2', '66774499', 0, 1);
 
 -- Tabellstruktur for utstyr type
 
@@ -107,7 +107,6 @@ VALUES
     (8,8,'2021,10,15','2021,10,27',false,254.50,'bra tilstand '),
     (9,6,'2021,10,27','2021,11,04',false,254.50,'bra tilstand '),
     (1,1,'2021,10,24','2021,11,03',false,0,'bra tilstand '),
-
     (10,9,'2021,10,15','2021,10,22',false,254.50,'bra tilstand ');
 
 create table lease

@@ -35,6 +35,7 @@ public class NyUtstyrServlet extends HttpServlet {
         } catch (SQLException | ServletException e) {
             e.printStackTrace();
         }
+
     }
 
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {

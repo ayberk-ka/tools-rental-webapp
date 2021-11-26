@@ -2,6 +2,8 @@ package bacit.web.bacit_web.DAO;
 //Her kalte vi klassene som vi skal bruke
 import bacit.web.bacit_web.Modell.AnsattM;
 import bacit.web.bacit_web.DBUtils;
+
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -34,15 +36,16 @@ public class AnsattDAO {
 
     while (rs.next()) {
         model =
-                new AnsattM(rs.getInt("ansatt_id"),
+                new AnsattM(
                         rs.getString("password"),
                         rs.getString("fornavn"),
                         rs.getString("etternavn"),
                         rs.getString("adresse"),
                         rs.getString("mobil"),
                         rs.getString("email"),
-                        rs.getInt("unionn"),
-                        rs.getInt("administrator") );
+                        rs.getInt("administrator"),
+                        rs.getInt("unionn"));
+                        model.setAnsatt_id(rs.getInt("ansatt_id"));
 
     }
         db.close();
@@ -50,5 +53,37 @@ public class AnsattDAO {
         // Her returnerer en model, det fremstiller en ansatt som kan logge inn
         return model;
 }
+
+    public boolean saveUser(AnsattM ansattM, PrintWriter printWriter) throws SQLException {
+        Connection db = null;
+        try {
+            db = DBUtils.getINSTANCE().getConnection();
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        String query3 = "INSERT INTO ansatt (password, fornavn, etternavn, email, adresse, mobil, administrator, unionn)" +
+                                             "values (?, ?, ?, ?, ?, ?, ?,?)";
+
+        PreparedStatement statement = db.prepareStatement(query3);
+
+        statement.setString(1, ansattM.getPassword());
+        statement.setString(2, ansattM.getFornavn());
+        statement.setString(3, ansattM.getEtternavn());
+        statement.setString(4, ansattM.getEmail());
+        statement.setString(5, ansattM.getAddresse());
+        statement.setString(6, ansattM.getMobil());
+        statement.setInt(7, ansattM.getAdminstrator());
+        statement.setInt(8, ansattM.getUnionn());
+        statement.execute() ;
+        statement.close();
+
+
+        db.close();
+
+        // Her returnerer en model, det fremstiller en ansatt som kan logge inn
+        return true;
+    }
+
 
 }

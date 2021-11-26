@@ -1,6 +1,7 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="bacit.web.bacit_web.Modell.UtstyrTypeM" %>
-<%@ page import="bacit.web.bacit_web.Modell.AnsattM" %><%--
+<%@ page import="bacit.web.bacit_web.Modell.AnsattM" %>
+<%@ page import="java.net.URLEncoder" %><%--
   Created by IntelliJ IDEA.
   User: Ms-ka
   Date: 11/8/2021
@@ -16,8 +17,10 @@
   <title>Ny Utstyr</title>
   <%
     AnsattM ansattM = (AnsattM) session.getAttribute("ansatt");
-    if (null == ansattM) {
-      response.sendRedirect("index.jsp");
+    if (0 == ansattM.getAdminstrator()) {
+      response.sendRedirect("home.jsp?errorMessage=" +
+              URLEncoder.encode("Du har ikke tillatelse til å legge til en ny Utstyr", "UTF-8"));
+
     }
   %>
 </head>

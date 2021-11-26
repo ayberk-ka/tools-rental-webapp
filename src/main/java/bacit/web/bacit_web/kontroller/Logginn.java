@@ -13,6 +13,9 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
+
+import static bacit.web.bacit_web.PasswordEncrypting.encrypt;
+
 @WebServlet ("/Logginn")
 
 
@@ -35,10 +38,12 @@ public class Logginn extends HttpServlet {
         PrintWriter out = response.getWriter();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
+        String encrpPassword = encrypt(password);
+
 
         try {
             AnsattDAO ansattDAO = new AnsattDAO();
-            AnsattM ansatt = ansattDAO.getUser(email, password);
+            AnsattM ansatt = ansattDAO.getUser(email, encrpPassword);
             if (ansatt != null) {
                 HttpSession session = request.getSession();
                 session.setAttribute("ansatt", ansatt);

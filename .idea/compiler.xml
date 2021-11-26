@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="bacit-web" />
         <module name="gruppe7" />
+        <module name="Test2" />
       </profile>
     </annotationProcessing>
   </component>
