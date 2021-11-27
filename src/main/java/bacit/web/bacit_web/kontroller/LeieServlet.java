@@ -1,12 +1,6 @@
 package bacit.web.bacit_web.kontroller;
-
-import bacit.web.bacit_web.DAO.AnsattDAO;
 import bacit.web.bacit_web.DAO.LeieDAO;
-import bacit.web.bacit_web.DAO.UtstyrDAO;
-import bacit.web.bacit_web.Modell.AnsattM;
 import bacit.web.bacit_web.Modell.LeieM;
-import javax.servlet.http.HttpSession;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;

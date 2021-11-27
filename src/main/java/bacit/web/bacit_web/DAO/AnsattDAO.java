@@ -2,7 +2,6 @@ package bacit.web.bacit_web.DAO;
 //Her kalte vi klassene som vi skal bruke
 import bacit.web.bacit_web.Modell.AnsattM;
 import bacit.web.bacit_web.DBUtils;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

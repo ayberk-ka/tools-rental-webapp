@@ -1,12 +1,10 @@
-
 package bacit.web.bacit_web.kontroller;
 
 import bacit.web.bacit_web.DAO.UtstyrDAO;
 import bacit.web.bacit_web.Modell.UtstyrM;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -34,11 +32,15 @@ public class UtstyrServlet extends HttpServlet {
             ArrayList<UtstyrM> utstyr = utstyrDAO.getUtsty(false, printWriter); // her hentet Utstyr fra DB
 
             request.setAttribute("utstyr", utstyr);  // vi har request og gi Attribute Parameter (utstyr) fra utstyr
-            request.getRequestDispatcher("utstyr.jsp").forward(request, response); // send og flyte videre til jsp
+            if (utstyr != null){
+                request.getRequestDispatcher("utstyr.jsp").forward(request, response); // send og flyte videre til jsp
 
+            }
+            else {
+                response.sendRedirect("error.jsp");
+            }
         } catch (SQLException | ServletException e) {
-            response.sendRedirect("error.jsp");
-            //e.printStackTrace();
+            e.printStackTrace();
         }
 
 

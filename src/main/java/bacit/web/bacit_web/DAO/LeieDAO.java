@@ -1,15 +1,11 @@
 package bacit.web.bacit_web.DAO;
-
 import bacit.web.bacit_web.DBUtils;
 import bacit.web.bacit_web.Modell.LeieM;
-import bacit.web.bacit_web.Modell.UtstyrM;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-
 public class LeieDAO {
 
 

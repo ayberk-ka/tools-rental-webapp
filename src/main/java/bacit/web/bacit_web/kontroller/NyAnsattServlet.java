@@ -1,8 +1,6 @@
 package bacit.web.bacit_web.kontroller;
-
 import bacit.web.bacit_web.DAO.AnsattDAO;
 import bacit.web.bacit_web.Modell.AnsattM;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -57,7 +55,7 @@ String encrpPassword = encrypt(password);
                 response.sendRedirect("error.jsp");
             }
         } catch (SQLException e) {
-            printWriter.println(e.getMessage());
+            printWriter.println("ERROR " + e.getMessage());
         }
     }
 

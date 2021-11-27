@@ -1,5 +1,4 @@
 package bacit.web.bacit_web;
-
 import org.apache.commons.codec.digest.DigestUtils;
 
 public class PasswordEncrypting {
@@ -9,7 +8,7 @@ public class PasswordEncrypting {
         return DigestUtils.md5Hex(password + PASSWORD_SECRET).toUpperCase();
     }
     public static void main(String[] args){
-        System.out.println(encrypt("1234"));
+        System.out.println(encrypt("123"));
 
     }
 }
