@@ -59,7 +59,7 @@ public class UtstyrDAO {
         statement.setFloat(3, utsty.getLeie_kostnad());
         statement.setBoolean(4, utsty.isStatus());
         statement.setString(5, utsty.getBruk_info());
-        statement.execute() ;
+        statement.executeUpdate() ;
         statement.close();
 
         return true;

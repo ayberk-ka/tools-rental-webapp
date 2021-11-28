@@ -1,5 +1,3 @@
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="bacit.web.bacit_web.Modell.UtstyrTypeM" %>
 <%@ page import="bacit.web.bacit_web.Modell.AnsattM" %>
 <%--
   Created by IntelliJ IDEA.

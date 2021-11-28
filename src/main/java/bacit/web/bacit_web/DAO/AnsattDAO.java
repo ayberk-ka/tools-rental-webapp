@@ -74,7 +74,7 @@ public class AnsattDAO {
         statement.setString(6, ansattM.getMobil());
         statement.setInt(7, ansattM.getAdminstrator());
         statement.setInt(8, ansattM.getUnionn());
-        statement.execute() ;
+        statement.executeUpdate() ;
         statement.close();
 
 

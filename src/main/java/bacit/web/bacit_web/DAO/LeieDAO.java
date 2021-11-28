@@ -30,7 +30,7 @@ public class LeieDAO {
         statement.setInt(5, leieM.getBetalt());
         statement.setFloat(6, leieM.getTotal_kostnad());
         statement.setString(7, leieM.getTilstandsvurdering());
-        statement.execute() ;
+        statement.executeUpdate() ;
         statement.close();
 
         return true;

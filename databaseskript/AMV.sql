@@ -151,5 +151,3 @@ SELECT * FROM ansatt;
 
 
 select *  from utstyr where status=0;
-
-
