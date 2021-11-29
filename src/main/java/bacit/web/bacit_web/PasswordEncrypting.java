@@ -8,7 +8,7 @@ public class PasswordEncrypting {
         return DigestUtils.md5Hex(password + PASSWORD_SECRET).toUpperCase();
     }
     public static void main(String[] args){
-        System.out.println(encrypt("123"));
+        System.out.println(encrypt("mahmoud"));
 
     }
 }

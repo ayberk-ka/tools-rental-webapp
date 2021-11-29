@@ -49,7 +49,7 @@ String encrpPassword = encrypt(password);
             Boolean succses= ansattDAO.saveUser(ansattM, printWriter);
             if (succses==true) {
 
-                printWriter.println("<script>window.location.href = \"home.jsp\" </script>");
+                request.getRequestDispatcher("home.jsp").forward(request, response);
             }
             else {
                 response.sendRedirect("error.jsp");
