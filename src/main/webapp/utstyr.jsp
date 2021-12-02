@@ -27,7 +27,7 @@
         <th>Utstyr typeID</th>
         <th>Navn</th>
         <th>Info</th>
-        <th>Status</th>
+        <th>Status: False=Ledig / True=Opptatt</th>
         <th>leie_kostnad</th>
 
     </tr>

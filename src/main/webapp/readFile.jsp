@@ -18,6 +18,7 @@
 </head>
 <body style="background-color: orange;">
 <jsp:include page="menu.html"></jsp:include>
+
 <form method="get" action="FileReadPdfServlet">
     <table>
         <tr>

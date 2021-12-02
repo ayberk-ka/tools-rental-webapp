@@ -1,15 +1,12 @@
 
 package bacit.web.bacit_web.kontroller;
-
 import bacit.web.bacit_web.DAO.UtstyrDAO;
 import bacit.web.bacit_web.Modell.UtstyrM;
 import bacit.web.bacit_web.Modell.UtstyrTypeM;
-
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.*;
+import java.sql.SQLException;
 import java.util.ArrayList;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -35,9 +32,10 @@ public class NyUtstyrServlet extends HttpServlet {
         } catch (SQLException | ServletException e) {
             e.printStackTrace();
         }
+
     }
 
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setContentType("text/html");
         PrintWriter printWriter = response.getWriter();
 
@@ -69,7 +67,7 @@ else {
                 response.sendRedirect("error.jsp");
             }
         } catch (SQLException e) {
-            printWriter.println(e.getMessage());
+            printWriter.println("ERROR " + e.getMessage());
         }
     }
 

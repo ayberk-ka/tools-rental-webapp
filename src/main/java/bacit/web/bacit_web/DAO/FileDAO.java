@@ -1,7 +1,5 @@
 package bacit.web.bacit_web.DAO;
-
 import bacit.web.bacit_web.DBUtils;
-
 import java.io.PrintWriter;
 import java.sql.*;
 

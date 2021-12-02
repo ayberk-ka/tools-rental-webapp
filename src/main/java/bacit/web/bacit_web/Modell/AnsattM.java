@@ -6,11 +6,7 @@ public class AnsattM {
     private int unionn,adminstrator;
     private String password, fornavn, etternavn, email, addresse, mobil;
 
-
-    public AnsattM
-            (int ansatt_id, String password, String fornavn, String etternavn,
-             String email, String addresse, String mobil, int administrator, int unionn ) {
-        this.ansatt_id = ansatt_id;
+    public AnsattM(String password, String fornavn, String etternavn, String email, String addresse, String mobil, int administrator, int unionn) {
         this.password = password;
         this.fornavn = fornavn;
         this.etternavn = etternavn;
@@ -19,14 +15,7 @@ public class AnsattM {
         this.email = email;
         this.unionn = unionn;
         this.adminstrator = administrator;
-    }
 
-    public int getAnsatt_id() {
-        return ansatt_id;
-    }
-
-    public void setAnsatt_id(int ansatt_id) {
-        this.ansatt_id = ansatt_id;
     }
 
     public int getUnionn() {
@@ -92,6 +81,25 @@ public class AnsattM {
     public void setMobil(String mobil) {
         this.mobil = mobil;
     }
+
+
+
+    public AnsattM
+            (int ansatt_id, String password, String fornavn, String etternavn,
+             String email, String addresse, String mobil, int administrator, int unionn) {
+        this.ansatt_id = ansatt_id;
+
+
+    }
+    public int getAnsatt_id() {
+        return ansatt_id;
+    }
+
+    public void setAnsatt_id(int ansatt_id) {
+        this.ansatt_id = ansatt_id;
+    }
+
+
 }
 //* public void addAnsatt() {
 //        try {

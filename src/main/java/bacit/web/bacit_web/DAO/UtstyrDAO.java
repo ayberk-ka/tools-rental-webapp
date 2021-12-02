@@ -1,9 +1,7 @@
 package bacit.web.bacit_web.DAO;
-
 import bacit.web.bacit_web.Modell.UtstyrM;
 import bacit.web.bacit_web.DBUtils;
 import bacit.web.bacit_web.Modell.UtstyrTypeM;
-
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -61,7 +59,7 @@ public class UtstyrDAO {
         statement.setFloat(3, utsty.getLeie_kostnad());
         statement.setBoolean(4, utsty.isStatus());
         statement.setString(5, utsty.getBruk_info());
-        statement.execute() ;
+        statement.executeUpdate() ;
         statement.close();
 
         return true;
@@ -90,6 +88,5 @@ public class UtstyrDAO {
 
         return utstyrType;
     }
-
 
 }
